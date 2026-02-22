@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تخليص اكسبرو — منصة الخدمات اللوجستية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#0B1F3A;--navy2:#14305A;--navy3:#1E4080;
+--green:#00C07F;--green2:#00A86B;--gp:#E6FAF4;
+--gold:#F5A623;--white:#fff;--off:#F4F7FB;
+--g100:#EEF2F8;--g200:#D8E2F0;--g400:#8FA5C0;--g600:#4A6480;--g800:#1E3048;
+--red:#E53E3E;
+--r:14px;--rs:8px;--rx:24px;
+--sh:0 2px 12px rgba(11,31,58,.08);
+--shm:0 8px 32px rgba(11,31,58,.13);
+--shl:0 20px 64px rgba(11,31,58,.18);
+--tr:.28s cubic-bezier(.4,0,.2,1);
+--f:'Cairo',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);color:var(--navy);background:var(--white);line-height:1.7;overflow-x:hidden;font-size:16px}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:var(--f);cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:var(--f)}
+.container{max-width:1260px;margin:0 auto;padding:0 20px}
+.sec{padding:88px 0}
+.sec-sm{padding:56px 0}
+h1{font-size:clamp(1.9rem,5vw,3.4rem);font-weight:900;line-height:1.25}
+h2{font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:900;line-height:1.3}
+h3{font-size:clamp(1.05rem,2vw,1.35rem);font-weight:700;line-height:1.4}
+p{color:var(--g600);font-size:.97rem;line-height:1.75}
+.tag{display:inline-flex;align-items:center;gap:7px;background:var(--gp);color:var(--green2);font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:100px;border:1px solid rgba(0,192,127,.2);margin-bottom:14px}
+.tag::before{content:'';width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0}
+.tc{text-align:center}
+.sec-ttl{color:var(--navy);margin-bottom:10px}
+.sec-sub{max-width:540px;margin:0 auto 52px;color:var(--g600)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:.97rem;padding:13px 26px;border-radius:var(--rs);cursor:pointer;border:none;transition:var(--tr);min-height:50px;white-space:nowrap;font-family:var(--f);text-decoration:none}
+.btn-p{background:var(--green);color:#fff;box-shadow:0 4px 18px rgba(0,192,127,.35)}
+.btn-p:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,192,127,.45)}
+.btn-o{background:transparent;color:var(--navy);border:2px solid var(--navy2)}
+.btn-o:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+.btn-w{background:#fff;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 18px rgba(37,211,102,.35)}
+.btn-wa:hover{background:#20b95a;transform:translateY(-2px)}
+.btn-lg{padding:16px 36px;font-size:1.05rem}
+.btn-sm{padding:9px 18px;font-size:.88rem;min-height:38px}
+
+/* NAVBAR */
+.nav{position:fixed;top:0;right:0;left:0;z-index:9000;background:rgba(255,255,255,.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--g200);transition:var(--tr)}
+.nav.scrolled{box-shadow:var(--shm)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1260px;margin:0 auto;padding:0 20px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.logo-box{width:40px;height:40px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-box svg{width:22px;height:22px}
+.logo-txt .n{font-size:1.05rem;font-weight:900;color:var(--navy);line-height:1}
+.logo-txt .s{font-size:.65rem;color:var(--g400);line-height:1;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nl{font-size:.9rem;font-weight:600;color:var(--g800);padding:7px 12px;border-radius:var(--rs);transition:var(--tr)}
+.nl:hover,.nl.act{color:var(--navy);background:var(--g100)}
+.nav-btns{display:flex;align-items:center;gap:8px}
+.ham{display:none;padding:8px;color:var(--navy);border-radius:var(--rs);transition:var(--tr)}
+.ham:hover{background:var(--g100)}
+.mob-menu{display:none;position:fixed;inset:70px 0 0 0;background:#fff;z-index:8999;overflow-y:auto;padding:20px 16px;flex-direction:column}
+.mob-menu.on{display:flex}
+.mob-lnk{display:flex;align-items:center;gap:12px;font-size:1.05rem;font-weight:700;color:var(--navy);padding:14px 16px;border-radius:var(--r);border-bottom:1px solid var(--g100);transition:var(--tr);text-decoration:none}
+.mob-lnk:hover{background:var(--g100)}
+.mob-lnk .ico{font-size:1.3rem;width:36px;text-align:center}
+.mob-acts{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(140deg,#071425 0%,#0B1F3A 40%,#0A2D1A 100%);display:flex;align-items:center;padding-top:70px;position:relative;overflow:hidden}
+.hero-dots{position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(circle at 1.5px 1.5px,rgba(255,255,255,.9) 1px,transparent 0);background-size:36px 36px}
+.hero-glow1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,192,127,.18) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,192,127,.12) 0%,transparent 70%);bottom:-100px;left:5%;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:72px 0;position:relative;z-index:1}
+.hero-text{color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,192,127,.12);border:1px solid rgba(0,192,127,.28);padding:7px 15px;border-radius:100px;margin-bottom:22px;font-size:.8rem;font-weight:700;color:#5DFFC0}
+.hero-badge .pulse{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2.2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+.hero h1{color:#fff;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:#5DFFC0}
+.hero-desc{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:32px;max-width:480px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.hstat-v{font-size:1.7rem;font-weight:900;color:#5DFFC0;line-height:1}
+.hstat-l{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:2px}
+.hero-visual{position:relative}
+.hcard{background:#fff;border-radius:var(--rx);padding:26px;box-shadow:var(--shl);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hcard-ttl{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.hcard-row{background:var(--g100);border-radius:8px;padding:10px 14px;margin-bottom:9px}
+.hcard-row-l{font-size:.7rem;color:var(--g400);font-weight:700;margin-bottom:2px}
+.hcard-row-v{font-size:.88rem;color:var(--navy);font-weight:700}
+.hcard-row-v.g{color:var(--green2)}
+.hcard-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:8px;padding:11px;font-weight:700;font-size:.9rem;cursor:pointer;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:6px;transition:var(--tr);font-family:var(--f)}
+.hcard-btn:hover{background:var(--green2)}
+.float-chip{position:absolute;background:#fff;border-radius:var(--r);padding:12px 16px;box-shadow:var(--shm);display:flex;align-items:center;gap:10px}
+.float-chip.a{top:-18px;right:-18px}
+.float-chip.b{bottom:16px;right:-26px}
+.chip-ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.chip-ico.gr{background:var(--gp)}
+.chip-ico.bl{background:#EEF3FF}
+.chip-v{font-size:1rem;font-weight:900;color:var(--navy);line-height:1}
+.chip-l{font-size:.7rem;color:var(--g400)}
+
+/* TRUST BAR */
+.tbar{background:var(--navy);padding:18px 0}
+.tbar-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.titem{display:flex;align-items:center;gap:10px}
+.titem-ico{width:42px;height:42px;background:rgba(0,192,127,.13);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;border:1px solid rgba(0,192,127,.22)}
+.titem-t{color:rgba(255,255,255,.88);font-size:.85rem;font-weight:700;line-height:1.2}
+.titem-s{color:rgba(255,255,255,.42);font-size:.7rem}
+.tdiv{width:1px;height:38px;background:rgba(255,255,255,.1)}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scard{background:#fff;border-radius:var(--rx);border:1.5px solid var(--g200);overflow:hidden;transition:var(--tr);position:relative}
+.scard:hover{border-color:var(--green);transform:translateY(-5px);box-shadow:var(--shl)}
+.scard-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;overflow:hidden}
+.scard-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(11,31,58,.55) 100%)}
+.scard-body{padding:22px}
+.sbadge{display:inline-block;background:var(--gp);color:var(--green2);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:10px}
+.sbadge.gold{background:#FFF8EC;color:var(--gold)}
+.scard h3{color:var(--navy);margin-bottom:7px;font-size:1.1rem}
+.scard p{font-size:.87rem;margin-bottom:14px}
+.scard-feats{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.scard-feats li{display:flex;align-items:center;gap:7px;font-size:.83rem;color:var(--g800)}
+.scard-feats li::before{content:'✓';color:var(--green);font-weight:900;font-size:.8rem;flex-shrink:0}
+.scard-lnk{display:flex;align-items:center;gap:5px;color:var(--green2);font-weight:700;font-size:.88rem;transition:var(--tr)}
+.scard-lnk:hover{gap:9px}
+.coming{position:absolute;top:14px;left:14px;background:var(--gold);color:#fff;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:100px}
+
+/* HOW IT WORKS */
+.how-bg{background:var(--off)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:38px;right:12%;left:12%;height:2px;background:linear-gradient(to left,var(--g200),var(--green),var(--g200));z-index:0}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
+.step-num{width:76px;height:76px;border-radius:50%;background:#fff;border:2.5px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:18px;box-shadow:var(--shm);transition:var(--tr);position:relative}
+.step:hover .step-num{background:var(--green);color:#fff;transform:scale(1.08)}
+.step-ico{position:absolute;top:-7px;right:-7px;width:26px;height:26px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.step-t{font-weight:700;color:var(--navy);margin-bottom:6px;font-size:.97rem}
+.step-d{font-size:.82rem;color:var(--g600)}
+
+/* RFQ */
+.rfq-sec{background:var(--navy);position:relative;overflow:hidden}
+.rfq-dots{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:radial-gradient(circle at 1.5px 1.5px,rgba(255,255,255,.9) 1px,transparent 0);background-size:28px 28px}
+.rfq-wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:72px;align-items:start;position:relative;z-index:1}
+.rfq-info{color:#fff;padding-top:8px}
+.rfq-info .tag{background:rgba(0,192,127,.13);color:#5DFFC0;border-color:rgba(0,192,127,.24)}
+.rfq-info h2{color:#fff;margin-bottom:12px}
+.rfq-info p{color:rgba(255,255,255,.65);margin-bottom:28px}
+.rfq-perks{display:flex;flex-direction:column;gap:12px}
+.perk{display:flex;align-items:center;gap:11px;font-size:.9rem;color:rgba(255,255,255,.78);font-weight:600}
+.perk .pi{width:34px;height:34px;background:rgba(0,192,127,.13);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.fcard{background:#fff;border-radius:var(--rx);padding:36px;box-shadow:var(--shl)}
+.fcard h3{color:var(--navy);margin-bottom:22px;font-size:1.15rem}
+.prog-bar{display:flex;gap:0;margin-bottom:24px;border-radius:var(--rs);overflow:hidden;border:1px solid var(--g200)}
+.prog-tab{flex:1;padding:9px 4px;background:var(--g100);font-size:.77rem;font-weight:700;color:var(--g600);text-align:center;cursor:pointer;transition:var(--tr);border:none;display:flex;align-items:center;justify-content:center;gap:5px;font-family:var(--f)}
+.prog-tab.cur{background:var(--navy);color:#fff}
+.prog-tab.done{background:var(--green);color:#fff}
+.pnum{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;flex-shrink:0}
+.fstep{display:none;flex-direction:column;gap:14px;animation:fadeIn .3s ease}
+.fstep.on{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:.82rem;font-weight:700;color:var(--navy)}
+.fg label span{color:var(--red);margin-right:2px}
+.fc{width:100%;padding:11px 14px;border:2px solid var(--g200);border-radius:var(--rs);font-size:.93rem;color:var(--navy);outline:none;transition:var(--tr);background:#fff;direction:rtl;font-family:var(--f)}
+.fc:focus{border-color:var(--navy2);box-shadow:0 0 0 4px rgba(20,48,90,.07)}
+.fc.err{border-color:var(--red);box-shadow:0 0 0 4px rgba(229,62,62,.07)}
+.fc.ok{border-color:var(--green)}
+.ferr{font-size:.75rem;color:var(--red);font-weight:700;display:none}
+.fg.bad .ferr{display:block}
+.fg.bad .fc{border-color:var(--red)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.phone-wrap{display:flex}
+.phone-pre{padding:11px 12px;background:var(--g100);border:2px solid var(--g200);border-left:none;border-radius:0 var(--rs) var(--rs) 0;font-weight:700;color:var(--g600);font-size:.87rem;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.phone-inp{border-radius:var(--rs) 0 0 var(--rs)!important}
+.fnav{display:flex;gap:10px;margin-top:4px}
+.fnav .btn{flex:1}
+.sum-box{background:var(--off);border-radius:var(--rs);padding:18px;margin-bottom:14px}
+.sum-ttl{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+.sum-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--g200);font-size:.82rem}
+.sum-row:last-child{border:none}
+.sum-k{font-weight:700;color:var(--navy)}
+.sum-v{color:var(--g600)}
+.agree-box{background:var(--gp);border:1px solid rgba(0,192,127,.2);border-radius:var(--rs);padding:12px;font-size:.8rem;color:var(--g600);margin-bottom:14px}
+.agree-box a{color:var(--green2);font-weight:700}
+.fsuccess{display:none;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:16px 0}
+.fsuccess.on{display:flex}
+.sico{width:72px;height:72px;background:var(--gp);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.fsuccess h3{color:var(--navy);font-size:1.2rem}
+.ref-num{background:var(--gp);color:var(--green2);font-size:1rem;font-weight:700;padding:8px 18px;border-radius:100px;letter-spacing:.5px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.scard2{background:var(--off);border-radius:var(--rx);padding:28px 20px;text-align:center;border:1.5px solid var(--g200);transition:var(--tr)}
+.scard2:hover{border-color:var(--green);box-shadow:var(--shm)}
+.scard2-ico{font-size:1.8rem;margin-bottom:10px}
+.scard2-v{font-size:2.3rem;font-weight:900;color:var(--navy);line-height:1;margin-bottom:5px}
+.scard2-l{font-size:.85rem;color:var(--g600)}
+
+/* WHY */
+.why-bg{background:var(--off)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fcard2{background:#fff;border-radius:var(--rx);padding:28px;border:1.5px solid var(--g200);transition:var(--tr)}
+.fcard2:hover{border-color:var(--green);box-shadow:var(--shm);transform:translateY(-4px)}
+.fcard2-ico{width:52px;height:52px;border-radius:var(--r);margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:var(--gp);border:1px solid rgba(0,192,127,.18)}
+.fcard2 h3{color:var(--navy);margin-bottom:7px;font-size:1rem}
+.fcard2 p{font-size:.85rem}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcard{background:#fff;border-radius:var(--rx);padding:26px;border:1.5px solid var(--g200);transition:var(--tr)}
+.tcard:hover{border-color:var(--green);box-shadow:var(--shm)}
+.tstars{color:var(--gold);margin-bottom:12px;font-size:1rem}
+.ttext{font-size:.9rem;margin-bottom:18px;color:var(--g600);line-height:1.7}
+.tauthor{display:flex;align-items:center;gap:10px}
+.tav{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy2),var(--green2));display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:1rem;flex-shrink:0}
+.taname{font-weight:700;color:var(--navy);font-size:.9rem}
+.taco{font-size:.75rem;color:var(--g600)}
+.tvbadge{margin-right:auto;background:var(--gp);color:var(--green2);font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:100px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-vis{position:relative}
+.about-main{background:linear-gradient(135deg,var(--navy),var(--navy3));border-radius:var(--rx);height:400px;display:flex;align-items:center;justify-content:center;font-size:6.5rem;position:relative;overflow:hidden}
+.about-main::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1.5px 1.5px,rgba(255,255,255,.06) 1px,transparent 0);background-size:28px 28px}
+.about-fc{position:absolute;background:#fff;border-radius:var(--r);padding:14px 18px;box-shadow:var(--shl);display:flex;align-items:center;gap:10px}
+.about-fc.bot{bottom:-20px;left:-20px}
+.about-fc.top{top:-14px;right:-14px}
+.about-fc-ico{font-size:1.4rem}
+.about-fc-v{font-weight:900;color:var(--navy);font-size:.95rem;line-height:1}
+.about-fc-l{font-size:.7rem;color:var(--g600)}
+.alist{display:flex;flex-direction:column;gap:12px;margin:20px 0 28px}
+.alist li{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;color:var(--g800)}
+.alist-ck{width:20px;height:20px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:900;flex-shrink:0;margin-top:2px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.lbadge{display:flex;align-items:center;gap:5px;background:var(--gp);border:1px solid rgba(0,192,127,.2);padding:5px 12px;border-radius:100px;font-size:.72rem;font-weight:700;color:var(--green2)}
+.about-acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
+/* CONSULT */
+.consult-box{background:linear-gradient(135deg,var(--navy) 0%,#153060 100%);border-radius:var(--rx);padding:56px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;position:relative;overflow:hidden}
+.consult-box::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,192,127,.18) 0%,transparent 70%);top:-120px;right:-80px}
+.consult-box h2{color:#fff;margin-bottom:10px}
+.consult-box p{color:rgba(255,255,255,.65);margin-bottom:0;max-width:480px}
+.consult-form{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1;flex-direction:column}
+.ci{padding:13px 16px;border:2px solid rgba(255,255,255,.18);border-radius:var(--rs);background:rgba(255,255,255,.09);color:#fff;font-size:.93rem;outline:none;min-width:230px;direction:rtl;font-family:var(--f);transition:var(--tr)}
+.ci::placeholder{color:rgba(255,255,255,.38)}
+.ci:focus{border-color:var(--green);background:rgba(255,255,255,.13)}
+.csuccess{display:none;background:var(--gp);color:var(--green2);font-weight:700;font-size:.9rem;padding:10px 18px;border-radius:var(--rs);text-align:center}
+.csuccess.on{display:block}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.75);padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-logo-box{width:42px;height:42px;background:var(--green);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.footer-logo-box svg{width:22px;height:22px}
+.footer-logo-txt{font-size:1.1rem;font-weight:900;color:#fff}
+.footer-desc{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:20px}
+.socials{display:flex;gap:8px}
+.soc{width:38px;height:38px;border-radius:var(--rs);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.9rem;text-decoration:none;transition:var(--tr)}
+.soc:hover{background:var(--green);border-color:var(--green);color:#fff}
+.fh{font-weight:700;color:#fff;margin-bottom:16px;font-size:.95rem}
+.flinks{display:flex;flex-direction:column;gap:8px}
+.flinks a{font-size:.83rem;color:rgba(255,255,255,.5);transition:var(--tr);display:flex;align-items:center;gap:5px}
+.flinks a::before{content:'←';font-size:.72rem;opacity:.4}
+.flinks a:hover{color:var(--green)}
+.fci{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px}
+.fci-ico{font-size:.95rem;color:var(--green);margin-top:2px;flex-shrink:0}
+.fci-t{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.55}
+.footer-bot{border-top:1px solid rgba(255,255,255,.07);padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fbot-t{font-size:.75rem;color:rgba(255,255,255,.35)}
+.fbot-lnks{display:flex;gap:20px}
+.fbot-lnks a{font-size:.75rem;color:rgba(255,255,255,.35);transition:var(--tr)}
+.fbot-lnks a:hover{color:var(--green)}
+
+/* FLOATING */
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:7000;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;font-size:1.5rem;transition:var(--tr);animation:wapulse 3s infinite}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes wapulse{0%,85%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}45%{box-shadow:0 4px 20px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,.1)}}
+.wa-tip{background:#fff;color:var(--navy);font-weight:700;font-size:.82rem;padding:7px 13px;border-radius:var(--rs);box-shadow:var(--shm);white-space:nowrap;opacity:0;transform:translateX(-8px);transition:var(--tr);pointer-events:none}
+.wa-float:hover .wa-tip{opacity:1;transform:translateX(0)}
+.btt{position:fixed;bottom:24px;right:24px;z-index:7000;width:46px;height:46px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;box-shadow:var(--shm);text-decoration:none;transition:var(--tr);opacity:0;pointer-events:none}
+.btt.vis{opacity:1;pointer-events:all}
+.btt:hover{background:var(--green);transform:translateY(-3px)}
+.mbnav{display:none;position:fixed;bottom:0;right:0;left:0;z-index:6000;background:#fff;border-top:1px solid var(--g200);padding:7px 0 max(7px,env(safe-area-inset-bottom));box-shadow:0 -4px 18px rgba(11,31,58,.1)}
+.mbnav-inner{display:flex}
+.mbtab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;text-decoration:none;transition:var(--tr)}
+.mbtab-ico{font-size:1.25rem}
+.mbtab-l{font-size:.62rem;font-weight:700;color:var(--g600)}
+.mbtab.act .mbtab-l{color:var(--green)}
+
+/* ANIMATION */
+.fu{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+.fu:nth-child(2){transition-delay:.1s}
+.fu:nth-child(3){transition-delay:.2s}
+.fu:nth-child(4){transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .steps::before{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .rfq-wrap{grid-template-columns:1fr;gap:36px}
+  .consult-box{grid-template-columns:1fr;gap:24px}
+  .consult-form{justify-content:flex-start}
+  .about-grid{grid-template-columns:1fr}
+  .about-vis{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .sec{padding:60px 0}
+  .container{padding:0 14px}
+  .nav-links,.nav-btns{display:none}
+  .ham{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:36px;padding:52px 0;text-align:center}
+  .hero-acts{justify-content:center}
+  .hero-stats{justify-content:center;gap:20px}
+  .hero-visual{display:none}
+  .tbar-inner{justify-content:center;gap:14px}
+  .tdiv{display:none}
+  .svc-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .mbnav{display:block}
+  body{padding-bottom:68px}
+  .wa-float{bottom:82px}
+  .btt{bottom:82px;right:14px}
+  .consult-box{padding:28px 20px}
+  .ci{min-width:100%;width:100%}
+  .consult-form{width:100%}
+}
+@media(max-width:480px){
+  h1{font-size:1.7rem}
+  h2{font-size:1.4rem}
+  .btn-lg{padding:13px 22px;font-size:.97rem}
+  .hero-stats{flex-direction:column;gap:14px}
+  .fcard{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" onclick="closeMob()">
+      <div class="logo-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00C07F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="logo-txt">
+        <div class="n">تخليص اكسبرو</div>
+        <div class="s">Takhlees Expro</div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#services" class="nl">خدماتنا</a>
+      <a href="#how" class="nl">كيف يعمل</a>
+      <a href="#why" class="nl">لماذا نحن</a>
+      <a href="#about" class="nl">من نحن</a>
+      <a href="#contact" class="nl">تواصل</a>
+    </nav>
+    <div class="nav-btns">
+      <a href="#rfq" class="btn btn-o btn-sm">تسجيل الدخول</a>
+      <a href="#rfq" class="btn btn-p btn-sm">أرسل طلبك ←</a>
+    </div>
+    <button class="ham" id="hamBtn" onclick="toggleMob()" aria-label="القائمة">
+      <svg id="hamIco" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#home" class="mob-lnk" onclick="closeMob()"><span class="ico">🏠</span>الرئيسية</a>
+  <a href="#services" class="mob-lnk" onclick="closeMob()"><span class="ico">📦</span>خدماتنا</a>
+  <a href="#how" class="mob-lnk" onclick="closeMob()"><span class="ico">🔄</span>كيف يعمل</a>
+  <a href="#why" class="mob-lnk" onclick="closeMob()"><span class="ico">⭐</span>لماذا نحن</a>
+  <a href="#about" class="mob-lnk" onclick="closeMob()"><span class="ico">🏢</span>من نحن</a>
+  <a href="#contact" class="mob-lnk" onclick="closeMob()"><span class="ico">📞</span>تواصل معنا</a>
+  <div class="mob-acts">
+    <a href="#rfq" class="btn btn-o" onclick="closeMob()">تسجيل الدخول</a>
+    <a href="#rfq" class="btn btn-p" onclick="closeMob()">أرسل طلبك الآن ←</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-dots"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="pulse"></span>مرخص — هيئة الجمارك السعودية · رقم 2024-SA-3847</div>
+        <h1>وصّل شحنتك بأسرع وقت<br>و<em>أوفر سعر</em></h1>
+        <p class="hero-desc">نربطك بأفضل المخلصين الجمركيين وشركات الشحن المعتمدة. قارن العروض، اختر الأنسب، وتابع كل خطوة.</p>
+        <div class="hero-acts">
+          <a href="#rfq" class="btn btn-p btn-lg">احصل على عرض سعر مجاني ←</a>
+          <a href="#how" class="btn btn-w btn-lg">كيف يعمل؟</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hstat-v">+2,000</div><div class="hstat-l">شحنة مكتملة</div></div>
+          <div><div class="hstat-v">99%</div><div class="hstat-l">رضا العملاء</div></div>
+          <div><div class="hstat-v">+60</div><div class="hstat-l">وسيط معتمد</div></div>
+          <div><div class="hstat-v">24/7</div><div class="hstat-l">دعم فوري</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hcard">
+          <div class="hcard-ttl">🚢 طلب تخليص جمركي جديد</div>
+          <div class="hcard-row"><div class="hcard-row-l">نوع الخدمة</div><div class="hcard-row-v">تخليص جمركي — ميناء جدة الإسلامي</div></div>
+          <div class="hcard-row"><div class="hcard-row-l">وزن الشحنة</div><div class="hcard-row-v">2,400 كجم — 18 طرد</div></div>
+          <div class="hcard-row"><div class="hcard-row-l">الوجهة</div><div class="hcard-row-v">الرياض، المملكة العربية السعودية</div></div>
+          <div class="hcard-row"><div class="hcard-row-l">العروض</div><div class="hcard-row-v g">✅ 3 عروض جاهزة للمقارنة</div></div>
+          <button class="hcard-btn" onclick="document.getElementById('rfq').scrollIntoView({behavior:'smooth'})">🔍 مقارنة العروض الآن</button>
+        </div>
+        <div class="float-chip a"><div class="chip-ico gr">⚡</div><div><div class="chip-v">استجابة فورية</div><div class="chip-l">متوسط 47 دقيقة</div></div></div>
+        <div class="float-chip b"><div class="chip-ico bl">💰</div><div><div class="chip-v">وفّر حتى 40%</div><div class="chip-l">مقارنةً بالسوق</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="tbar">
+  <div class="container">
+    <div class="tbar-inner">
+      <div class="titem"><div class="titem-ico">🏛️</div><div><div class="titem-t">مرخص رسمياً</div><div class="titem-s">هيئة الجمارك السعودية</div></div></div>
+      <div class="tdiv"></div>
+      <div class="titem"><div class="titem-ico">🔐</div><div><div class="titem-t">متوافق مع ZATCA</div><div class="titem-s">الفاتورة الإلكترونية</div></div></div>
+      <div class="tdiv"></div>
+      <div class="titem"><div class="titem-ico">🌐</div><div><div class="titem-t">مندمج مع نظام بيان</div><div class="titem-s">الجمارك الرقمية</div></div></div>
+      <div class="tdiv"></div>
+      <div class="titem"><div class="titem-ico">💳</div><div><div class="titem-t">دفع آمن ومتنوع</div><div class="titem-s">مدى · فيزا · آبل باي</div></div></div>
+      <div class="tdiv"></div>
+      <div class="titem"><div class="titem-ico">⭐</div><div><div class="titem-t">4.9 من 1,200 تقييم</div><div class="titem-s">تقييمات موثقة</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="container">
+    <div class="tc">
+      <div class="tag">خدماتنا</div>
+      <h2 class="sec-ttl">كل ما تحتاجه في مكان واحد</h2>
+      <p class="sec-sub">ثلاث خدمات متكاملة تغطي رحلة شحنتك من المنشأ حتى باب مستودعك</p>
+    </div>
+    <div class="svc-grid">
+      <div class="scard fu">
+        <div class="scard-img" style="background:linear-gradient(135deg,#0B1F3A,#1E4080)">🛃</div>
+        <div class="scard-body">
+          <div class="sbadge">الأكثر طلباً</div>
+          <h3>التخليص الجمركي</h3>
+          <p>إنهاء الإجراءات الجمركية بسرعة عبر شبكة مخلصين معتمدين على مستوى المملكة.</p>
+          <ul class="scard-feats"><li>تخليص في 24-72 ساعة</li><li>متابعة مستمرة لكل مرحلة</li><li>توثيق كامل للمستندات</li><li>امتثال تام للوائح</li></ul>
+          <a href="#rfq" class="scard-lnk">احصل على عرض سعر ←</a>
+        </div>
+      </div>
+      <div class="scard fu">
+        <div class="scard-img" style="background:linear-gradient(135deg,#0D3520,#0D6B3A)">🚢</div>
+        <div class="scard-body">
+          <div class="sbadge">بحري · جوي · بري</div>
+          <h3>الشحن الدولي والمحلي</h3>
+          <p>خدمات شحن شاملة من وإلى أكثر من 50 دولة بأسعار تنافسية مع ضمان التسليم.</p>
+          <ul class="scard-feats"><li>شحن بحري وجوي وبري</li><li>تتبع مباشر في الوقت الحقيقي</li><li>تأمين شامل على الشحنات</li><li>وفر حتى 35% من التكاليف</li></ul>
+          <a href="#rfq" class="scard-lnk">احصل على عرض سعر ←</a>
+        </div>
+      </div>
+      <div class="scard fu">
+        <div class="scard-img" style="background:linear-gradient(135deg,#1A0D30,#3D1B6B)">🏭</div>
+        <div class="scard-body">
+          <div class="sbadge">مستودعات معتمدة</div>
+          <h3>التخزين المؤقت والدائم</h3>
+          <p>مستودعات آمنة وذكية لحفظ بضاعتك بأفضل المعايير حتى يحين وقت التسليم.</p>
+          <ul class="scard-feats"><li>عقود مرنة قصيرة وطويلة</li><li>إدارة مخزون رقمية</li><li>مراقبة 24/7 بالكاميرات</li><li>وفر حتى 45% من التكاليف</li></ul>
+          <a href="#rfq" class="scard-lnk">احصل على عرض سعر ←</a>
+        </div>
+      </div>
+      <div class="scard fu" style="opacity:.72">
+        <div class="coming">قريباً</div>
+        <div class="scard-img" style="background:linear-gradient(135deg,#1A1000,#4D3000)">📜</div>
+        <div class="scard-body">
+          <div class="sbadge gold">قريباً</div>
+          <h3>شهادات سابر</h3>
+          <p>استخراج شهادات سابر لاستيفاء اشتراطات هيئة المواصفات والمقاييس السعودية.</p>
+          <ul class="scard-feats"><li>تسجيل المنتجات بالهيئة</li><li>شهادات الامتثال الفني</li><li>أسعار تنافسية</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec how-bg" id="how">
+  <div class="container">
+    <div class="tc">
+      <div class="tag">العملية</div>
+      <h2 class="sec-ttl">كيف تبدأ في 4 خطوات؟</h2>
+      <p class="sec-sub">بسّطنا العملية لتحصل على أفضل سعر في أقل من 5 دقائق</p>
+    </div>
+    <div class="steps">
+      <div class="step fu"><div class="step-num"><span class="step-ico">📋</span>١</div><div class="step-t">أرسل تفاصيل الشحنة</div><div class="step-d">أدخل نوع الشحنة والوزن والوجهة ومتطلباتك الخاصة</div></div>
+      <div class="step fu"><div class="step-num"><span class="step-ico">📬</span>٢</div><div class="step-t">استلم عروضاً متعددة</div><div class="step-d">تصلك عروض من وسطاء معتمدين خلال 24-48 ساعة</div></div>
+      <div class="step fu"><div class="step-num"><span class="step-ico">⚖️</span>٣</div><div class="step-t">قارن واختر الأنسب</div><div class="step-d">جدول مقارنة واضح بالسعر والوقت والتقييم لكل وسيط</div></div>
+      <div class="step fu"><div class="step-num"><span class="step-ico">🚀</span>٤</div><div class="step-t">تابع شحنتك مباشرة</div><div class="step-d">لوحة تحكم متكاملة لمتابعة كل خطوة وتنزيل المستندات</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RFQ -->
+<section class="sec rfq-sec" id="rfq">
+  <div class="rfq-dots"></div>
+  <div class="container">
+    <div class="rfq-wrap">
+      <div class="rfq-info">
+        <div class="tag">طلب عرض سعر</div>
+        <h2>احصل على عرضك<br>خلال 24 ساعة</h2>
+        <p>أرسل تفاصيل شحنتك واستلم عروضاً تنافسية من أفضل الوسطاء المعتمدين في المملكة.</p>
+        <div class="rfq-perks">
+          <div class="perk"><div class="pi">✅</div>مجاني تماماً — لا رسوم على الاستعلام</div>
+          <div class="perk"><div class="pi">🔒</div>بياناتك محمية ولن تُشارك إلا مع الوسطاء</div>
+          <div class="perk"><div class="pi">⚡</div>متوسط الاستجابة: 4 ساعات في أوقات الدوام</div>
+          <div class="perk"><div class="pi">🏆</div>جميع الوسطاء مرخصون ومقيَّمون من العملاء</div>
+          <div class="perk"><div class="pi">🇸🇦</div>دعم عربي متخصص على مدار الساعة</div>
+        </div>
+      </div>
+      <div class="fcard">
+        <h3>🚀 أرسل طلبك الآن</h3>
+        <div class="prog-bar" id="progBar">
+          <button class="prog-tab cur" onclick="gotoStep(1)"><span class="pnum">١</span> الشحنة</button>
+          <button class="prog-tab" onclick="gotoStep(2)"><span class="pnum">٢</span> التواصل</button>
+          <button class="prog-tab" onclick="gotoStep(3)"><span class="pnum">٣</span> التأكيد</button>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="fstep on" id="fstep1">
+          <div class="fg" id="fg-stype">
+            <label>نوع الخدمة <span>*</span></label>
+            <select class="fc" id="f-stype">
+              <option value="">— اختر نوع الخدمة —</option>
+              <option value="customs">التخليص الجمركي</option>
+              <option value="sea">شحن بحري دولي</option>
+              <option value="air">شحن جوي دولي</option>
+              <option value="local">شحن داخلي</option>
+              <option value="storage">تخزين مؤقت أو دائم</option>
+              <option value="combined">خدمة متكاملة (تخليص + شحن)</option>
+            </select>
+            <span class="ferr">الرجاء اختيار نوع الخدمة</span>
+          </div>
+          <div class="frow">
+            <div class="fg" id="fg-weight">
+              <label>وزن الشحنة (كجم) <span>*</span></label>
+              <input class="fc" type="number" id="f-weight" placeholder="مثال: 500" min="1">
+              <span class="ferr">أدخل وزن الشحنة</span>
+            </div>
+            <div class="fg">
+              <label>عدد الطرود</label>
+              <input class="fc" type="number" id="f-pkgs" placeholder="مثال: 12" min="1">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg" id="fg-origin">
+              <label>بلد المنشأ <span>*</span></label>
+              <select class="fc" id="f-origin">
+                <option value="">— اختر —</option>
+                <option value="CN">الصين 🇨🇳</option>
+                <option value="TR">تركيا 🇹🇷</option>
+                <option value="DE">ألمانيا 🇩🇪</option>
+                <option value="US">الولايات المتحدة 🇺🇸</option>
+                <option value="AE">الإمارات 🇦🇪</option>
+                <option value="IN">الهند 🇮🇳</option>
+                <option value="IT">إيطاليا 🇮🇹</option>
+                <option value="UK">المملكة المتحدة 🇬🇧</option>
+                <option value="other">دولة أخرى</option>
+              </select>
+              <span class="ferr">اختر بلد المنشأ</span>
+            </div>
+            <div class="fg" id="fg-dest">
+              <label>المدينة المستهدفة <span>*</span></label>
+              <select class="fc" id="f-dest">
+                <option value="">— اختر —</option>
+                <option value="RUH">الرياض</option>
+                <option value="JED">جدة</option>
+                <option value="DMM">الدمام</option>
+                <option value="MKK">مكة المكرمة</option>
+                <option value="MED">المدينة المنورة</option>
+                <option value="ABH">أبها</option>
+                <option value="TIF">الطائف</option>
+                <option value="other">مدينة أخرى</option>
+              </select>
+              <span class="ferr">اختر المدينة المستهدفة</span>
+            </div>
+          </div>
+          <div class="fg">
+            <label>تفاصيل إضافية (اختياري)</label>
+            <textarea class="fc" id="f-details" rows="2" placeholder="نوع البضاعة، متطلبات خاصة، تاريخ التسليم..."></textarea>
+          </div>
+          <div class="fnav">
+            <button class="btn btn-p" onclick="nextStep(1)">التالي: بيانات التواصل ←</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="fstep" id="fstep2">
+          <div class="frow">
+            <div class="fg" id="fg-name">
+              <label>الاسم الكريم <span>*</span></label>
+              <input class="fc" type="text" id="f-name" placeholder="الاسم بالكامل">
+              <span class="ferr">أدخل اسمك الكريم</span>
+            </div>
+            <div class="fg" id="fg-company">
+              <label>اسم الشركة <span>*</span></label>
+              <input class="fc" type="text" id="f-company" placeholder="اسم الشركة أو المؤسسة">
+              <span class="ferr">أدخل اسم الشركة</span>
+            </div>
+          </div>
+          <div class="fg" id="fg-phone">
+            <label>رقم الجوال <span>*</span></label>
+            <div class="phone-wrap">
+              <span class="phone-pre">🇸🇦 +966</span>
+              <input class="fc phone-inp" type="tel" id="f-phone" placeholder="5xxxxxxxx" maxlength="9">
+            </div>
+            <span class="ferr">أدخل رقم الجوال (9 أرقام تبدأ بـ 5)</span>
+          </div>
+          <div class="fg">
+            <label>البريد الإلكتروني</label>
+            <input class="fc" type="email" id="f-email" placeholder="example@company.com">
+          </div>
+          <div class="fg">
+            <label>طريقة التواصل المفضلة</label>
+            <select class="fc" id="f-contact">
+              <option value="wa">واتساب</option>
+              <option value="call">مكالمة هاتفية</option>
+              <option value="email">بريد إلكتروني</option>
+            </select>
+          </div>
+          <div class="fnav">
+            <button class="btn btn-o" onclick="prevStep(2)">← رجوع</button>
+            <button class="btn btn-p" onclick="nextStep(2)">التالي: مراجعة الطلب ←</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="fstep" id="fstep3">
+          <div class="sum-box">
+            <div class="sum-ttl">📋 ملخص طلبك</div>
+            <div id="sumRows"></div>
+          </div>
+          <div class="agree-box">✅ بإرسال هذا الطلب أنت توافق على <a href="#">سياسة الخصوصية</a> و<a href="#">شروط الاستخدام</a></div>
+          <div class="fnav">
+            <button class="btn btn-o" onclick="prevStep(3)">← رجوع</button>
+            <button class="btn btn-p" onclick="submitRFQ()">📤 أرسل الطلب الآن</button>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="fsuccess" id="fsuccess">
+          <div class="sico">🎉</div>
+          <h3>تم إرسال طلبك بنجاح!</h3>
+          <p>سيتواصل معك فريقنا خلال 24 ساعة بأفضل العروض. رقم طلبك:</p>
+          <div class="ref-num" id="refNum">#TXP-2024-00000</div>
+          <a href="https://wa.me/966500000000" class="btn btn-wa">💬 تابع عبر واتساب</a>
+          <button class="btn btn-o btn-sm" onclick="resetForm()" style="margin-top:4px">إرسال طلب جديد</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="sec">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="scard2 fu"><div class="scard2-ico">📦</div><div class="scard2-v" data-cnt="2000">0</div><div class="scard2-l">شحنة مكتملة بنجاح</div></div>
+      <div class="scard2 fu"><div class="scard2-ico">🤝</div><div class="scard2-v" data-cnt="60">0</div><div class="scard2-l">وسيط ومخلص معتمد</div></div>
+      <div class="scard2 fu"><div class="scard2-ico">⭐</div><div class="scard2-v" data-cnt="99">0</div><div class="scard2-l">% رضا العملاء</div></div>
+      <div class="scard2 fu"><div class="scard2-ico">⏱️</div><div class="scard2-v" data-cnt="47">0</div><div class="scard2-l">دقيقة متوسط الاستجابة</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="sec why-bg" id="why">
+  <div class="container">
+    <div class="tc">
+      <div class="tag">لماذا نحن</div>
+      <h2 class="sec-ttl">ما يجعلنا الاختيار الأول</h2>
+      <p class="sec-sub">ميزات مصممة لتلبية احتياجات السوق السعودي وعملاء الشركات</p>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard2 fu"><div class="fcard2-ico">⚡</div><h3>سرعة في التنفيذ</h3><p>تخليص جمركي في 24-72 ساعة مع متابعة مستمرة وفريق متخصص يعمل على طلبك على الفور.</p></div>
+      <div class="fcard2 fu"><div class="fcard2-ico">💰</div><h3>أسعار شفافة بلا مفاجآت</h3><p>ترى كل تكلفة مقدماً. لا رسوم خفية. قارن عروضاً متعددة واختر الأنسب لميزانيتك.</p></div>
+      <div class="fcard2 fu"><div class="fcard2-ico">🏅</div><h3>وسطاء مرخصون ومقيَّمون</h3><p>كل وسيط خضع لتدقيق صارم ومرخص من الجهات المختصة. تقييمات حقيقية من عملاء فعليين.</p></div>
+      <div class="fcard2 fu"><div class="fcard2-ico">📍</div><h3>تتبع في الوقت الحقيقي</h3><p>راقب شحنتك لحظة بلحظة من الاستلام حتى التسليم. تحديثات فورية على جوالك وبريدك.</p></div>
+      <div class="fcard2 fu"><div class="fcard2-ico">📄</div><h3>إدارة مستندات ذكية</h3><p>كل مستنداتك — فواتير، بيانات جمركية، شهادات — محفوظة وقابلة للتنزيل في أي وقت.</p></div>
+      <div class="fcard2 fu"><div class="fcard2-ico">🇸🇦</div><h3>دعم عربي متخصص</h3><p>فريق دعم متخصص باللغة العربية يفهم خصوصية السوق السعودي واللوائح الجمركية — 24/7.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="reviews">
+  <div class="container">
+    <div class="tc">
+      <div class="tag">آراء العملاء</div>
+      <h2 class="sec-ttl">ماذا يقول عملاؤنا</h2>
+      <p class="sec-sub">تجارب حقيقية من شركات سعودية تثق بتخليص اكسبرو</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard fu">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"وفّرنا أكثر من 38% من تكاليف التخليص الجمركي في أول 3 أشهر. مقارنة العروض اختصرت علينا ساعات من العمل."</p>
+        <div class="tauthor"><div class="tav">ع</div><div><div class="taname">عبدالرحمن السلمي</div><div class="taco">مدير اللوجستيات — شركة الفلك للاستيراد، الرياض</div></div><div class="tvbadge">✓ موثق</div></div>
+      </div>
+      <div class="tcard fu">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"المنصة غيّرت طريقة عملنا مع الجمارك. تتبع الشحنات فوري والمستندات جاهزة بنقرة واحدة."</p>
+        <div class="tauthor"><div class="tav">م</div><div><div class="taname">منى البحراني</div><div class="taco">مديرة المشتريات — مجموعة النخيل التجارية، جدة</div></div><div class="tvbadge">✓ موثق</div></div>
+      </div>
+      <div class="tcard fu">
+        <div class="tstars">⭐⭐⭐⭐⭐</div>
+        <p class="ttext">"وسيط معتمد يتابع كل شيء من أول نقطة لآخر نقطة. الفرق واضح جداً عن أي خدمة أخرى جربناها."</p>
+        <div class="tauthor"><div class="tav">ف</div><div><div class="taname">فارس القرني</div><div class="taco">صاحب مصنع — المنطقة الصناعية، الدمام</div></div><div class="tvbadge">✓ موثق</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-vis">
+        <div class="about-main">🏗️</div>
+        <div class="about-fc bot"><div class="about-fc-ico">📋</div><div><div class="about-fc-v">+2,000 طلب مكتمل</div><div class="about-fc-l">منذ انطلاق المنصة</div></div></div>
+        <div class="about-fc top"><div class="about-fc-ico">🏛️</div><div><div class="about-fc-v">مرخص رسمياً</div><div class="about-fc-l">هيئة الجمارك السعودية</div></div></div>
+      </div>
+      <div>
+        <div class="tag">من نحن</div>
+        <h2 class="sec-ttl">شريكك الموثوق في كل شحنة</h2>
+        <p>تخليص اكسبرو منصة وساطة لوجستية سعودية أُسست لتبسيط عمليات التخليص الجمركي والشحن والتخزين. نربط الشركات بشبكة من الوسطاء المعتمدين بشفافية تامة وأسعار تنافسية.</p>
+        <ul class="alist">
+          <li><div class="alist-ck">✓</div><span>مرخصون من الهيئة السعودية للجمارك ومسجلون في وزارة التجارة</span></li>
+          <li><div class="alist-ck">✓</div><span>متوافقون مع منظومة بيان الجمركية ومتطلبات ZATCA للفاتورة الإلكترونية</span></li>
+          <li><div class="alist-ck">✓</div><span>فريق خبراء لوجستيات بخبرة تتجاوز 15 عاماً في السوق السعودي</span></li>
+          <li><div class="alist-ck">✓</div><span>نخدم قطاعات الاستيراد والتصنيع والتجزئة والتجارة الإلكترونية</span></li>
+        </ul>
+        <div class="badges">
+          <div class="lbadge">🏛️ هيئة الجمارك السعودية</div>
+          <div class="lbadge">📋 وزارة التجارة</div>
+          <div class="lbadge">🔐 ZATCA معتمد</div>
+        </div>
+        <div class="about-acts">
+          <a href="#rfq" class="btn btn-p">ابدأ معنا اليوم ←</a>
+          <a href="#contact" class="btn btn-o">تواصل مع الفريق</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT CTA -->
+<section class="sec-sm" id="contact">
+  <div class="container">
+    <div class="consult-box">
+      <div style="position:relative;z-index:1">
+        <h2>جلسة استشارية مجانية</h2>
+        <p>لديك أسئلة عن تخليص شحنتك؟ فريقنا جاهز لمساعدتك في تخطيط أفضل مسار لوجستي لتجارتك.</p>
+      </div>
+      <div class="consult-form">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <input type="text" class="ci" id="ci-val" placeholder="بريدك الإلكتروني أو رقم الواتساب">
+          <button class="btn btn-p btn-lg" onclick="submitConsult()">احجز الاستشارة ←</button>
+        </div>
+        <div class="csuccess" id="csuccess">✅ شكراً! سيتواصل معك فريقنا خلال 24 ساعة 🎉</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="footer-logo-txt">تخليص اكسبرو</span>
+        </div>
+        <p class="footer-desc">منصة وساطة لوجستية سعودية معتمدة تربطك بأفضل المخلصين الجمركيين وشركات الشحن والتخزين.</p>
+        <div class="socials">
+          <a href="#" class="soc" aria-label="تويتر">𝕏</a>
+          <a href="#" class="soc" aria-label="لينكدإن">in</a>
+          <a href="#" class="soc" aria-label="إنستقرام">📷</a>
+          <a href="https://wa.me/966500000000" class="soc" aria-label="واتساب">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="fh">خدماتنا</div>
+        <ul class="flinks">
+          <li><a href="#services">التخليص الجمركي</a></li>
+          <li><a href="#services">الشحن الدولي</a></li>
+          <li><a href="#services">الشحن المحلي</a></li>
+          <li><a href="#services">التخزين المؤقت</a></li>
+          <li><a href="#services">شهادات سابر (قريباً)</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fh">الشركة</div>
+        <ul class="flinks">
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#why">لماذا نحن</a></li>
+          <li><a href="#how">كيف يعمل</a></li>
+          <li><a href="#reviews">آراء العملاء</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fh">تواصل معنا</div>
+        <div class="fci"><div class="fci-ico">📞</div><div class="fci-t">920 000 000<br><small>الأحد — الخميس 8ص-8م</small></div></div>
+        <div class="fci"><div class="fci-ico">💬</div><div class="fci-t">واتساب: 966 50 000 0000<br><small>24/7 للطلبات العاجلة</small></div></div>
+        <div class="fci"><div class="fci-ico">✉️</div><div class="fci-t">info@takhlees-expro.sa</div></div>
+        <div class="fci"><div class="fci-ico">📍</div><div class="fci-t">الرياض — طريق الملك فهد، برج المملكة، الطابق 12</div></div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <div class="fbot-t">© 2024 تخليص اكسبرو. جميع الحقوق محفوظة. سجل تجاري: 1010XXXXXX</div>
+      <div class="fbot-lnks"><a href="#">سياسة الخصوصية</a><a href="#">الشروط والأحكام</a><a href="#">إخلاء المسؤولية</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="wa-float">
+  <div class="wa-tip">تحدث معنا على واتساب</div>
+  <a href="https://wa.me/966500000000?text=مرحباً، أريد الاستفسار عن خدمات تخليص اكسبرو" class="wa-btn" aria-label="واتساب">💬</a>
+</div>
+
+<!-- BACK TO TOP -->
+<a href="#home" class="btt" id="btt" aria-label="للأعلى">↑</a>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mbnav" aria-label="تنقل سريع">
+  <div class="mbnav-inner">
+    <a href="#home" class="mbtab act" id="mbt0"><span class="mbtab-ico">🏠</span><span class="mbtab-l">الرئيسية</span></a>
+    <a href="#services" class="mbtab" id="mbt1"><span class="mbtab-ico">📦</span><span class="mbtab-l">خدماتنا</span></a>
+    <a href="#rfq" class="mbtab" id="mbt2"><span class="mbtab-ico">📤</span><span class="mbtab-l">أرسل طلب</span></a>
+    <a href="#why" class="mbtab" id="mbt3"><span class="mbtab-ico">⭐</span><span class="mbtab-l">لماذا نحن</span></a>
+    <a href="https://wa.me/966500000000" class="mbtab" id="mbt4"><span class="mbtab-ico">💬</span><span class="mbtab-l">واتساب</span></a>
+  </div>
+</nav>
+
+<script>
+// === Navbar scroll ===
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>50);
+  document.getElementById('btt').classList.toggle('vis',scrollY>300);
+});
+
+// === Mobile menu ===
+let mobOpen=false;
+function toggleMob(){
+  mobOpen=!mobOpen;
+  document.getElementById('mobMenu').classList.toggle('on',mobOpen);
+  document.getElementById('hamIco').innerHTML=mobOpen
+    ?'<line x1="4" y1="4" x2="20" y2="20" stroke-linecap="round"/><line x1="20" y1="4" x2="4" y2="20" stroke-linecap="round"/>'
+    :'<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+}
+function closeMob(){
+  mobOpen=false;
+  document.getElementById('mobMenu').classList.remove('on');
+  document.getElementById('hamIco').innerHTML='<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+}
+document.addEventListener('click',e=>{
+  if(mobOpen&&!e.target.closest('#mobMenu')&&!e.target.closest('#hamBtn'))closeMob();
+});
+
+// === Fade up ===
+const fuObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fu').forEach(el=>fuObs.observe(el));
+
+// === Counters ===
+function animCnt(el){
+  const tgt=+el.dataset.cnt;let c=0;const s=tgt/55;
+  const t=setInterval(()=>{c=Math.min(c+s,tgt);el.textContent=Math.floor(c).toLocaleString('ar-SA');if(c>=tgt)clearInterval(t)},18);
+}
+const cntObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animCnt(e.target);cntObs.unobserve(e.target)}}),{threshold:.5});
+document.querySelectorAll('[data-cnt]').forEach(el=>cntObs.observe(el));
+
+// === Active nav ===
+const secs=[...document.querySelectorAll('section[id]')];
+const nls=[...document.querySelectorAll('.nl')];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(scrollY>=s.offsetTop-110)cur=s.id});
+  nls.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+cur));
+});
+
+// === Mobile tabs ===
+document.querySelectorAll('.mbtab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.mbtab').forEach(x=>x.classList.remove('act'));
+    t.classList.add('act');
+  });
+});
+
+// ========================
+// MULTI-STEP FORM
+// ========================
+let curStep=1;
+const svMap={customs:'التخليص الجمركي',sea:'شحن بحري دولي',air:'شحن جوي دولي',local:'شحن داخلي',storage:'تخزين',combined:'خدمة متكاملة'};
+const oriMap={CN:'الصين',TR:'تركيا',DE:'ألمانيا',US:'الولايات المتحدة',AE:'الإمارات',IN:'الهند',IT:'إيطاليا',UK:'المملكة المتحدة',other:'دولة أخرى'};
+const dstMap={RUH:'الرياض',JED:'جدة',DMM:'الدمام',MKK:'مكة المكرمة',MED:'المدينة المنورة',ABH:'أبها',TIF:'الطائف',other:'مدينة أخرى'};
+const cmMap={wa:'واتساب',call:'مكالمة هاتفية',email:'بريد إلكتروني'};
+
+function gotoStep(s){
+  curStep=s;
+  for(let i=1;i<=3;i++)document.getElementById('fstep'+i).classList.toggle('on',i===s);
+  document.querySelectorAll('.prog-tab').forEach((t,i)=>{
+    t.classList.remove('cur','done');
+    if(i+1<s)t.classList.add('done');
+    else if(i+1===s)t.classList.add('cur');
+  });
+}
+
+function markField(id,grpId,ok){
+  const el=document.getElementById(id),grp=document.getElementById(grpId);
+  if(ok){grp.classList.remove('bad');el.classList.remove('err');el.classList.add('ok');}
+  else{grp.classList.add('bad');el.classList.add('err');el.classList.remove('ok');}
+}
+
+function validateStep1(){
+  let ok=true;
+  if(!document.getElementById('f-stype').value){markField('f-stype','fg-stype',false);ok=false;}else markField('f-stype','fg-stype',true);
+  if(!document.getElementById('f-weight').value||+document.getElementById('f-weight').value<1){markField('f-weight','fg-weight',false);ok=false;}else markField('f-weight','fg-weight',true);
+  if(!document.getElementById('f-origin').value){markField('f-origin','fg-origin',false);ok=false;}else markField('f-origin','fg-origin',true);
+  if(!document.getElementById('f-dest').value){markField('f-dest','fg-dest',false);ok=false;}else markField('f-dest','fg-dest',true);
+  return ok;
+}
+function validateStep2(){
+  let ok=true;
+  if(!document.getElementById('f-name').value.trim()){markField('f-name','fg-name',false);ok=false;}else markField('f-name','fg-name',true);
+  if(!document.getElementById('f-company').value.trim()){markField('f-company','fg-company',false);ok=false;}else markField('f-company','fg-company',true);
+  const ph=document.getElementById('f-phone').value.replace(/\D/g,'');
+  if(ph.length<9||!ph.startsWith('5')){markField('f-phone','fg-phone',false);ok=false;}else markField('f-phone','fg-phone',true);
+  return ok;
+}
+function buildSummary(){
+  const rows=[
+    ['الخدمة',svMap[document.getElementById('f-stype').value]||'—'],
+    ['الوزن',(document.getElementById('f-weight').value||'—')+' كجم'],
+    ['عدد الطرود',document.getElementById('f-pkgs').value||'—'],
+    ['بلد المنشأ',oriMap[document.getElementById('f-origin').value]||'—'],
+    ['المدينة المستهدفة',dstMap[document.getElementById('f-dest').value]||'—'],
+    ['الاسم',document.getElementById('f-name').value||'—'],
+    ['الشركة',document.getElementById('f-company').value||'—'],
+    ['الجوال','+966 '+(document.getElementById('f-phone').value||'—')],
+    ['التواصل',cmMap[document.getElementById('f-contact').value]||'واتساب'],
+  ];
+  document.getElementById('sumRows').innerHTML=rows.map(r=>`<div class="sum-row"><span class="sum-k">${r[0]}</span><span class="sum-v">${r[1]}</span></div>`).join('');
+}
+function nextStep(s){
+  if(s===1&&!validateStep1())return;
+  if(s===2){if(!validateStep2())return;buildSummary();}
+  gotoStep(s+1);
+}
+function prevStep(s){gotoStep(s-1);}
+function submitRFQ(){
+  const ref='#TXP-'+Date.now().toString().slice(-8);
+  document.getElementById('refNum').textContent=ref;
+  for(let i=1;i<=3;i++)document.getElementById('fstep'+i).classList.remove('on');
+  document.getElementById('fsuccess').classList.add('on');
+  document.querySelectorAll('.prog-tab').forEach(t=>t.classList.add('done'));
+}
+function resetForm(){
+  ['f-stype','f-weight','f-pkgs','f-origin','f-dest','f-details','f-name','f-company','f-phone','f-email'].forEach(id=>{
+    const el=document.getElementById(id);if(el){el.value='';el.classList.remove('err','ok');}
+  });
+  document.querySelectorAll('.fg').forEach(g=>g.classList.remove('bad'));
+  document.getElementById('fsuccess').classList.remove('on');
+  gotoStep(1);
+}
+
+// Live validation clear
+document.querySelectorAll('.fc').forEach(el=>{
+  el.addEventListener('input',()=>{
+    if(el.value.trim()){el.classList.remove('err');el.classList.add('ok');el.closest('.fg')?.classList.remove('bad');}
+  });
+});
+
+// === Consult form ===
+function submitConsult(){
+  const v=document.getElementById('ci-val').value.trim();
+  if(!v){document.getElementById('ci-val').style.borderColor='rgba(229,62,62,.5)';return;}
+  document.getElementById('ci-val').value='';
+  document.getElementById('ci-val').style.borderColor='';
+  document.getElementById('csuccess').classList.add('on');
+  setTimeout(()=>document.getElementById('csuccess').classList.remove('on'),5000);
+}
+</script>
+</body>
+</html>
