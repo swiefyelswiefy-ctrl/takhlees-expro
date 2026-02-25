@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركاء تخليص اكسبرو — انضم لأكبر شبكة لوجستية في المملكة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-300: #6ee7b7;
+            --emerald-400: #34d399;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --emerald-800: #065f46;
+            --emerald-900: #064e3b;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --amber-600: #d97706;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --shadow-soft: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+            --shadow-glow: 0 0 40px rgba(16,185,129,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--emerald-700);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--emerald-500), var(--emerald-700));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .logo small {
+            font-size: 0.7rem;
+            color: var(--slate-400);
+            font-weight: 400;
+            display: block;
+            margin-top: -2px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate-600);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--emerald-600); }
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+            color: white;
+            box-shadow: 0 4px 16px rgba(5,150,105,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(5,150,105,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--emerald-600);
+            border: 2px solid var(--emerald-200);
+        }
+        .btn-outline:hover {
+            background: var(--emerald-50);
+            border-color: var(--emerald-400);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--slate-600);
+            padding: 10px 16px;
+        }
+        .btn-ghost:hover { color: var(--emerald-600); }
+        .btn-lg {
+            padding: 14px 32px;
+            font-size: 1rem;
+            border-radius: var(--radius);
+        }
+        .btn-white {
+            background: white;
+            color: var(--emerald-700);
+            box-shadow: var(--shadow-soft);
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--slate-700);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 80px;
+            background: linear-gradient(165deg, var(--slate-900) 0%, #0c2e25 40%, var(--emerald-900) 100%);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(16,185,129,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -20%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(52,211,153,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content {
+            animation: fadeInUp 0.8s ease both;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16,185,129,0.15);
+            border: 1px solid rgba(16,185,129,0.25);
+            color: var(--emerald-300);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--emerald-400);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .hero h1 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--emerald-300), var(--amber-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 520px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .hero-stat h4 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--emerald-400);
+        }
+        .hero-stat span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Hero visual card */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            animation: fadeInUp 0.8s 0.2s ease both;
+        }
+        .partner-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+        }
+        .partner-card h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .partner-form-group {
+            margin-bottom: 1.2rem;
+        }
+        .partner-form-group label {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .partner-form-group input,
+        .partner-form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-sm);
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .partner-form-group input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .partner-form-group input:focus,
+        .partner-form-group select:focus {
+            border-color: var(--emerald-400);
+        }
+        .partner-form-group select option {
+            background: var(--slate-800);
+            color: white;
+        }
+        .partner-card .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 14px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        .partner-card-footer {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+        }
+        .partner-card-footer a {
+            color: var(--emerald-400);
+            text-decoration: none;
+        }
+
+        /* ─── SECTION COMMONS ─── */
+        section {
+            padding: 100px 2rem;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--emerald-600);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--slate-500);
+            max-width: 640px;
+            line-height: 1.8;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header .section-desc {
+            margin: 0 auto;
+        }
+
+        /* ─── TRUST BAR ─── */
+        .trust-bar {
+            background: white;
+            border-bottom: 1px solid var(--slate-200);
+            padding: 2rem;
+        }
+        .trust-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--slate-500);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .trust-item .icon {
+            width: 36px;
+            height: 36px;
+            background: var(--emerald-50);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ─── WAYS TO WORK ─── */
+        .ways-section {
+            background: white;
+        }
+        .ways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .way-card {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .way-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emerald-400), var(--emerald-600));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .way-card:hover {
+            border-color: var(--emerald-200);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+        .way-card:hover::before { opacity: 1; }
+        .way-card .tag {
+            display: inline-block;
+            background: var(--emerald-50);
+            color: var(--emerald-700);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .way-card .tag.popular {
+            background: var(--amber-400);
+            color: var(--slate-900);
+        }
+        .way-card .tag.new {
+            background: var(--blue-500);
+            color: white;
+        }
+        .way-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .way-icon.customs { background: linear-gradient(135deg, #ecfdf5, #d1fae5); }
+        .way-icon.shipping { background: linear-gradient(135deg, #eff6ff, #dbeafe); }
+        .way-icon.warehouse { background: linear-gradient(135deg, #fefce8, #fef9c3); }
+        .way-icon.tech { background: linear-gradient(135deg, #fdf4ff, #f3e8ff); }
+        .way-icon.franchise { background: linear-gradient(135deg, #fff7ed, #ffedd5); }
+        .way-icon.referral { background: linear-gradient(135deg, #f0fdfa, #ccfbf1); }
+
+        .way-card h3 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.75rem;
+        }
+        .way-card p {
+            font-size: 0.92rem;
+            color: var(--slate-500);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .way-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .way-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--slate-600);
+            font-size: 0.85rem;
+            padding: 5px 0;
+        }
+        .way-features li .check {
+            color: var(--emerald-500);
+            font-weight: 700;
+        }
+        .way-card .way-cta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--emerald-600);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+        .way-card:hover .way-cta { gap: 10px; }
+
+        /* ─── BENEFITS ─── */
+        .benefits-section {
+            background: var(--slate-50);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .benefit-card {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            gap: 1.2rem;
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            border-color: var(--emerald-200);
+            box-shadow: var(--shadow-soft);
+        }
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--emerald-50);
+        }
+        .benefit-card h4 {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--slate-800);
+            margin-bottom: 0.4rem;
+        }
+        .benefit-card p {
+            font-size: 0.87rem;
+            color: var(--slate-500);
+            line-height: 1.6;
+        }
+
+        /* ─── HOW IT WORKS ─── */
+        .steps-section {
+            background: white;
+        }
+        .steps-timeline {
+            display: flex;
+            gap: 0;
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            right: 60px;
+            left: 60px;
+            height: 3px;
+            background: var(--emerald-100);
+            z-index: 0;
+        }
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .step-num {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--emerald-400);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--emerald-600);
+        }
+        .step-item h4 {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--slate-800);
+            margin-bottom: 0.4rem;
+        }
+        .step-item p {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            max-width: 200px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials-section {
+            background: linear-gradient(165deg, var(--slate-900) 0%, #0c2e25 60%, var(--emerald-900) 100%);
+            position: relative;
+        }
+        .testimonials-section .section-label { color: var(--emerald-400); }
+        .testimonials-section .section-title { color: white; }
+        .testimonials-section .section-desc { color: rgba(255,255,255,0.5); }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .testimonial-stars {
+            color: var(--amber-400);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card blockquote {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--emerald-500), var(--emerald-700));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .testimonial-author h5 {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .testimonial-author span {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.78rem;
+            display: block;
+        }
+
+        /* ─── NUMBERS ─── */
+        .numbers-section {
+            background: var(--emerald-600);
+            padding: 60px 2rem;
+        }
+        .numbers-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .number-item h3 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: white;
+        }
+        .number-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ─── FAQ ─── */
+        .faq-section {
+            background: white;
+        }
+        .faq-list {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--slate-200);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--slate-800);
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: right;
+            gap: 1rem;
+        }
+        .faq-question .arrow {
+            font-size: 1.2rem;
+            color: var(--emerald-500);
+            transition: transform 0.3s;
+            min-width: 24px;
+        }
+        .faq-item.open .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-answer p {
+            color: var(--slate-500);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            background: var(--slate-50);
+            text-align: center;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, var(--emerald-600), var(--emerald-800));
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .cta-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--slate-900);
+            color: rgba(255,255,255,0.5);
+            padding: 60px 2rem 30px;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            max-width: 300px;
+            margin-top: 0.75rem;
+        }
+        .footer-col h4 {
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            font-size: 0.87rem;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--emerald-400); }
+        .footer-bottom {
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .footer-bottom-links a:hover { color: var(--emerald-400); }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── MOBILE NAV ─── */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 72px;
+            right: 0;
+            left: 0;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--slate-200);
+            box-shadow: var(--shadow-md);
+            z-index: 999;
+        }
+        .mobile-nav.open { display: block; }
+        .mobile-nav a {
+            display: block;
+            padding: 12px 0;
+            color: var(--slate-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--slate-100);
+        }
+        .mobile-nav .btn {
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin: 0 auto 2rem; }
+            .hero-actions { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { margin-top: 2rem; }
+            .ways-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 100px 1.5rem 60px; }
+            .section-title { font-size: 1.9rem; }
+            .ways-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .steps-timeline { flex-direction: column; gap: 2rem; }
+            .steps-timeline::before { display: none; }
+            .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+            .trust-inner { gap: 1.5rem; }
+            .partner-card { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+            section { padding: 60px 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">TE</div>
+                <div>
+                    تخليص اكسبرو
+                    <small>Takhlees Expro</small>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#ways">طرق الشراكة</a></li>
+                <li><a href="#benefits">المميزات</a></li>
+                <li><a href="#steps">كيف تبدأ</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#register" class="btn btn-ghost">تسجيل الدخول</a>
+                <a href="#register" class="btn btn-primary">انضم كشريك ←</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="القائمة">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#ways">طرق الشراكة</a>
+            <a href="#benefits">المميزات</a>
+            <a href="#steps">كيف تبدأ</a>
+            <a href="#faq">الأسئلة الشائعة</a>
+            <a href="#register" class="btn btn-primary" style="margin-top:1rem;">انضم كشريك ←</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    التسجيل مفتوح الآن — انضم لشبكة الشركاء
+                </div>
+                <h1>نمّي أعمالك مع<br><em>أكبر شبكة لوجستية</em><br>في المملكة</h1>
+                <p>
+                    انضم لمنصة تخليص اكسبرو كمخلص جمركي، شركة شحن، أو مزوّد خدمات لوجستية واحصل على تدفق مستمر من الطلبات والعملاء الجدد.
+                </p>
+                <div class="hero-actions">
+                    <a href="#register" class="btn btn-primary btn-lg">سجّل كشريك مجاناً ←</a>
+                    <a href="#ways" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.2);color:white;">اكتشف طرق الشراكة</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h4>+2,000</h4>
+                        <span>طلب شهرياً</span>
+                    </div>
+                    <div class="hero-stat">
+                        <h4>+60</h4>
+                        <span>شريك معتمد</span>
+                    </div>
+                    <div class="hero-stat">
+                        <h4>%40</h4>
+                        <span>نمو ربع سنوي</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="partner-card" id="register">
+                    <h3>🚀 سجّل كشريك جديد</h3>
+                    <div class="partner-form-group">
+                        <label>اسم الشركة *</label>
+                        <input type="text" placeholder="مثال: شركة النقل السريع">
+                    </div>
+                    <div class="partner-form-group">
+                        <label>نوع الشراكة *</label>
+                        <select>
+                            <option value="">— اختر نوع الشراكة —</option>
+                            <option>مخلص جمركي</option>
+                            <option>شركة شحن دولي</option>
+                            <option>شركة شحن محلي</option>
+                            <option>مزوّد تخزين ومستودعات</option>
+                            <option>وكيل تقنية وتكامل</option>
+                            <option>شريك إحالة</option>
+                        </select>
+                    </div>
+                    <div class="partner-form-group">
+                        <label>رقم الجوال *</label>
+                        <input type="tel" placeholder="05XXXXXXXX" dir="ltr" style="text-align:right;">
+                    </div>
+                    <div class="partner-form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" placeholder="email@company.com" dir="ltr" style="text-align:right;">
+                    </div>
+                    <button class="btn btn-primary" onclick="showSuccess(this)">أنشئ حسابك المجاني ←</button>
+                    <div class="partner-card-footer">
+                        لديك حساب بالفعل؟ <a href="#">تسجيل الدخول</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-inner">
+            <div class="trust-item"><span class="icon">🏛️</span> مرخص — هيئة الجمارك السعودية</div>
+            <div class="trust-item"><span class="icon">🔐</span> متوافق مع ZATCA</div>
+            <div class="trust-item"><span class="icon">🌐</span> مندمج مع نظام بيان</div>
+            <div class="trust-item"><span class="icon">⭐</span> 4.9 من 1,200 تقييم</div>
+        </div>
+    </div>
+
+    <!-- WAYS TO WORK -->
+    <section class="ways-section" id="ways">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">طرق الشراكة</div>
+                <h2 class="section-title">ستة طرق للعمل معنا</h2>
+                <p class="section-desc">اختر النموذج الذي يناسب طبيعة عملك وابدأ في استقبال الطلبات فوراً</p>
+            </div>
+            <div class="ways-grid">
+                <!-- 1 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag popular">⭐ الأكثر طلباً</span>
+                    <div class="way-icon customs">🛃</div>
+                    <h3>مخلص جمركي معتمد</h3>
+                    <p>انضم كمخلص جمركي واستقبل طلبات تخليص من شركات تبحث عن أفضل سعر وأسرع خدمة في جميع موانئ المملكة.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> طلبات يومية من شركات موثقة</li>
+                        <li><span class="check">✓</span> لوحة تحكم لإدارة العروض</li>
+                        <li><span class="check">✓</span> نظام تقييم يعزز سمعتك</li>
+                        <li><span class="check">✓</span> تحصيل مالي آمن ومضمون</li>
+                    </ul>
+                    <a href="#register" class="way-cta">قدّم الآن ←</a>
+                </div>
+                <!-- 2 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag">شريك شحن</span>
+                    <div class="way-icon shipping">🚢</div>
+                    <h3>شركة شحن دولي</h3>
+                    <p>وسّع قاعدة عملائك عبر تقديم عروض شحن بحري وجوي وبري تنافسية لآلاف المستوردين السعوديين.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> وصول لسوق المستوردين السعودي</li>
+                        <li><span class="check">✓</span> تكامل API مع أنظمتك</li>
+                        <li><span class="check">✓</span> تتبع مباشر للعملاء</li>
+                        <li><span class="check">✓</span> عمولة تنافسية شفافة</li>
+                    </ul>
+                    <a href="#register" class="way-cta">قدّم الآن ←</a>
+                </div>
+                <!-- 3 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag">مستودعات</span>
+                    <div class="way-icon warehouse">🏭</div>
+                    <h3>مزوّد تخزين ومستودعات</h3>
+                    <p>اعرض مساحات التخزين المتاحة لديك واستقبل حجوزات تخزين مؤقت ودائم من عملاء المنصة.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> إشغال أعلى لمستودعاتك</li>
+                        <li><span class="check">✓</span> إدارة حجوزات رقمية</li>
+                        <li><span class="check">✓</span> تسعير مرن حسب المساحة</li>
+                        <li><span class="check">✓</span> عقود موثقة إلكترونياً</li>
+                    </ul>
+                    <a href="#register" class="way-cta">قدّم الآن ←</a>
+                </div>
+                <!-- 4 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag new">🆕 جديد</span>
+                    <div class="way-icon tech">💻</div>
+                    <h3>وكيل تقنية وتكامل</h3>
+                    <p>قدّم حلول تقنية مثل ربط ERP، أتمتة المستندات الجمركية، أو تطوير تكاملات مخصصة لعملاء المنصة.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> وصول لـ API المنصة الكامل</li>
+                        <li><span class="check">✓</span> دعم فني متخصص</li>
+                        <li><span class="check">✓</span> مشاريع تقنية مستمرة</li>
+                        <li><span class="check">✓</span> شراكة تقنية معتمدة</li>
+                    </ul>
+                    <a href="#register" class="way-cta">قدّم الآن ←</a>
+                </div>
+                <!-- 5 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag">امتياز تجاري</span>
+                    <div class="way-icon franchise">🤝</div>
+                    <h3>شريك امتياز إقليمي</h3>
+                    <p>احصل على حق تمثيل تخليص اكسبرو في منطقتك وأسّس فرعاً معتمداً يخدم العملاء المحليين.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> علامة تجارية قوية جاهزة</li>
+                        <li><span class="check">✓</span> تدريب وتأهيل شامل</li>
+                        <li><span class="check">✓</span> دعم تسويقي وتشغيلي</li>
+                        <li><span class="check">✓</span> حقوق حصرية في منطقتك</li>
+                    </ul>
+                    <a href="#register" class="way-cta">استفسر الآن ←</a>
+                </div>
+                <!-- 6 -->
+                <div class="way-card animate-on-scroll">
+                    <span class="tag">بدون رأسمال</span>
+                    <div class="way-icon referral">💎</div>
+                    <h3>شريك إحالة</h3>
+                    <p>اكسب عمولة على كل عميل جديد تحيله للمنصة. مثالي للمستشارين وأصحاب العلاقات التجارية.</p>
+                    <ul class="way-features">
+                        <li><span class="check">✓</span> عمولة متكررة على كل صفقة</li>
+                        <li><span class="check">✓</span> رابط إحالة شخصي</li>
+                        <li><span class="check">✓</span> لوحة تتبع الإحالات</li>
+                        <li><span class="check">✓</span> سحب أرباح فوري</li>
+                    </ul>
+                    <a href="#register" class="way-cta">ابدأ الآن ←</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">لماذا تخليص اكسبرو</div>
+                <h2 class="section-title">مميزات تجعلنا شريكك المثالي</h2>
+                <p class="section-desc">أدوات ومزايا مصممة لمساعدتك على النمو وزيادة إيراداتك</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">📈</div>
+                    <div>
+                        <h4>تدفق عملاء مستمر</h4>
+                        <p>أكثر من 2,000 طلب شهرياً يبحث أصحابها عن مزوّدي خدمات موثوقين مثلك.</p>
+                    </div>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">💳</div>
+                    <div>
+                        <h4>تحصيل مالي مضمون</h4>
+                        <p>نضمن لك تحصيل مستحقاتك كاملة عبر نظام دفع آمن ومعتمد. لا قلق على أموالك.</p>
+                    </div>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">⭐</div>
+                    <div>
+                        <h4>نظام سمعة وتقييم</h4>
+                        <p>كل تقييم إيجابي يرفع ترتيبك ويجلب لك مزيداً من الطلبات والعملاء المميزين.</p>
+                    </div>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">🖥️</div>
+                    <div>
+                        <h4>لوحة تحكم ذكية</h4>
+                        <p>إدارة العروض والطلبات والمستندات والتواصل مع العملاء من مكان واحد.</p>
+                    </div>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">📱</div>
+                    <div>
+                        <h4>إشعارات فورية</h4>
+                        <p>استلم إشعارات لحظية عند ورود طلب جديد يطابق تخصصك وموقعك الجغرافي.</p>
+                    </div>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">🤝</div>
+                    <div>
+                        <h4>دعم مخصص للشركاء</h4>
+                        <p>مدير حساب مخصص لمساعدتك في أي وقت بالإضافة لأكاديمية تدريب رقمية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="steps-section" id="steps">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">البداية</div>
+                <h2 class="section-title">كيف تبدأ في 4 خطوات</h2>
+                <p class="section-desc">عملية تسجيل بسيطة تأخذ أقل من 10 دقائق</p>
+            </div>
+            <div class="steps-timeline">
+                <div class="step-item animate-on-scroll">
+                    <div class="step-num">١</div>
+                    <h4>أنشئ حسابك</h4>
+                    <p>سجّل بياناتك الأساسية ونوع الخدمة التي تقدمها</p>
+                </div>
+                <div class="step-item animate-on-scroll">
+                    <div class="step-num">٢</div>
+                    <h4>أرفق المستندات</h4>
+                    <p>السجل التجاري والتراخيص المطلوبة حسب نوع الخدمة</p>
+                </div>
+                <div class="step-item animate-on-scroll">
+                    <div class="step-num">٣</div>
+                    <h4>مراجعة واعتماد</h4>
+                    <p>فريقنا يراجع طلبك ويعتمده خلال 24-48 ساعة</p>
+                </div>
+                <div class="step-item animate-on-scroll">
+                    <div class="step-num">٤</div>
+                    <h4>ابدأ استقبال الطلبات</h4>
+                    <p>حسابك جاهز! ابدأ في تقديم العروض والفوز بالصفقات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <div class="numbers-section">
+        <div class="numbers-grid">
+            <div class="number-item">
+                <h3>+2,000</h3>
+                <p>طلب شهرياً على المنصة</p>
+            </div>
+            <div class="number-item">
+                <h3>+60</h3>
+                <p>شريك ومخلص معتمد</p>
+            </div>
+            <div class="number-item">
+                <h3>%99</h3>
+                <p>نسبة رضا العملاء</p>
+            </div>
+            <div class="number-item">
+                <h3>15+</h3>
+                <p>مدينة في المملكة</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">قصص نجاح</div>
+                <h2 class="section-title">ماذا يقول شركاؤنا</h2>
+                <p class="section-desc">تجارب حقيقية من مخلصين وشركات شحن نمّوا أعمالهم مع تخليص اكسبرو</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"ارتفعت إيراداتنا بنسبة 60% خلال 6 أشهر. المنصة وفّرت لنا تدفق عملاء مستمر بدون أي تكاليف تسويقية."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">خ</div>
+                        <div>
+                            <h5>خالد العمري</h5>
+                            <span>مخلص جمركي — ميناء جدة الإسلامي</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"لوحة التحكم سهلت علينا إدارة عشرات الطلبات يومياً. نظام التقييم رفع ثقة العملاء بنا بشكل ملحوظ."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ن</div>
+                        <div>
+                            <h5>نورة الحربي</h5>
+                            <span>مديرة التشغيل — شركة سرعة اللوجستية، الرياض</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"كشريك إحالة، حققت دخلاً إضافياً ممتازاً. النظام شفاف والعمولات تصل في وقتها بدون أي تأخير."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ط</div>
+                        <div>
+                            <h5>طارق الشهراني</h5>
+                            <span>مستشار لوجستي مستقل — الدمام</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">أسئلة شائعة</div>
+                <h2 class="section-title">الأسئلة الأكثر شيوعاً</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item open">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        هل التسجيل في المنصة مجاني؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نعم، التسجيل مجاني تماماً. لا توجد رسوم اشتراك أو رسوم تفعيل. نحصل على عمولة صغيرة فقط عند إتمام كل صفقة بنجاح، مما يعني أننا لا نكسب إلا عندما تكسب أنت.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ما المستندات المطلوبة للتسجيل كمخلص جمركي؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>تحتاج إلى: السجل التجاري ساري المفعول، رخصة التخليص الجمركي من هيئة الجمارك، شهادة الزكاة والضريبة، وبطاقة الهوية الوطنية أو الإقامة. فريقنا يساعدك في استكمال أي مستند ناقص.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        كم من الوقت يستغرق اعتماد حسابي؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>عادةً يتم مراجعة واعتماد الحساب خلال 24 إلى 48 ساعة عمل من تقديم جميع المستندات المطلوبة. في بعض الحالات قد يستغرق الأمر فترة أطول إذا كانت هناك مستندات بحاجة للتحقق.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        كيف أحصل على مستحقاتي المالية؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>يتم تحويل مستحقاتك أسبوعياً إلى حسابك البنكي المسجل بعد خصم عمولة المنصة. يمكنك متابعة جميع المعاملات المالية من لوحة التحكم بشفافية كاملة.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        هل يمكنني التسجيل كشريك إحالة بدون سجل تجاري؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>نعم! برنامج الإحالة مفتوح للأفراد والشركات. تحتاج فقط إلى هوية وطنية وحساب بنكي لاستلام العمولات. لا يُشترط وجود سجل تجاري للانضمام كشريك إحالة.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ما نسبة عمولة المنصة؟
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>تختلف نسبة العمولة حسب نوع الشراكة وحجم الأعمال. بشكل عام تتراوح بين 5% إلى 12% من قيمة الصفقة. الشركاء ذوو الأحجام العالية يحصلون على نسب مخفضة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>ابدأ رحلة النمو اليوم</h2>
+                <p>انضم لشبكة الشركاء واحصل على أولى طلباتك خلال 48 ساعة من الاعتماد</p>
+                <div class="cta-actions">
+                    <a href="#register" class="btn btn-white btn-lg">سجّل كشريك مجاناً ←</a>
+                    <a href="https://wa.me/966500000000?text=مرحباً، أريد الاستفسار عن الشراكة مع تخليص اكسبرو" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:white;">💬 تواصل عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="color: var(--emerald-400);">
+                        <div class="logo-icon">TE</div>
+                        <div>تخليص اكسبرو <small style="color:rgba(255,255,255,0.35);">Takhlees Expro</small></div>
+                    </a>
+                    <p>منصة وساطة لوجستية سعودية معتمدة تربط الشركات بأفضل المخلصين الجمركيين وشركات الشحن والتخزين.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>طرق الشراكة</h4>
+                    <a href="#ways">مخلص جمركي</a>
+                    <a href="#ways">شركة شحن</a>
+                    <a href="#ways">مزوّد تخزين</a>
+                    <a href="#ways">وكيل تقني</a>
+                    <a href="#ways">شريك إحالة</a>
+                </div>
+                <div class="footer-col">
+                    <h4>الشركة</h4>
+                    <a href="#">من نحن</a>
+                    <a href="#benefits">المميزات</a>
+                    <a href="#faq">الأسئلة الشائعة</a>
+                    <a href="#">المدونة</a>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <a href="#">📞 920 000 000</a>
+                    <a href="https://wa.me/966500000000">💬 واتساب: 966 50 000 0000</a>
+                    <a href="#">✉️ <span class="__cf_email__" data-cfemail="e1918093958f849392a195808a898d848492cc849991938ecf9280">[email&#160;protected]</span></a>
+                    <a href="#">📍 الرياض — طريق الملك فهد</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2024 تخليص اكسبرو. جميع الحقوق محفوظة.</span>
+                <div class="footer-bottom-links">
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">الشروط والأحكام</a>
+                    <a href="#">إخلاء المسؤولية</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Hamburger menu
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.mobile-nav a').forEach(a => {
+            a.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+        });
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), idx * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Form success
+        function showSuccess(btn) {
+            const card = btn.closest('.partner-card');
+            const inputs = card.querySelectorAll('input, select');
+            let valid = true;
+            inputs.forEach(input => {
+                if (input.hasAttribute('required') || input.closest('.partner-form-group').querySelector('label').textContent.includes('*')) {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = '#ef4444';
+                        valid = false;
+                    } else {
+                        input.style.borderColor = 'rgba(255,255,255,0.12)';
+                    }
+                }
+            });
+
+            btn.innerHTML = '✅ تم الإرسال — سنتواصل معك قريباً';
+            btn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+            btn.disabled = true;
+            setTimeout(() => {
+         
